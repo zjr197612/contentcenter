@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.deyi.contentcenter.dao.content.ShareMapper">
+  <resultMap id="BaseResultMap" type="org.deyi.contentcenter.domain.entity.content.Share">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="share_id" jdbcType="INTEGER" property="shareId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="share_title" jdbcType="VARCHAR" property="shareTitle" />
+    <result column="share_create_time" jdbcType="TIMESTAMP" property="shareCreateTime" />
+    <result column="share_update_time" jdbcType="TIMESTAMP" property="shareUpdateTime" />
+    <result column="share_is_original" jdbcType="BIT" property="shareIsOriginal" />
+    <result column="share_author" jdbcType="VARCHAR" property="shareAuthor" />
+    <result column="share_cover" jdbcType="VARCHAR" property="shareCover" />
+    <result column="share_summary" jdbcType="VARCHAR" property="shareSummary" />
+    <result column="share_price" jdbcType="INTEGER" property="sharePrice" />
+    <result column="share_download_url" jdbcType="VARCHAR" property="shareDownloadUrl" />
+    <result column="share_buy_count" jdbcType="INTEGER" property="shareBuyCount" />
+    <result column="share_show_flag" jdbcType="BIT" property="shareShowFlag" />
+    <result column="share_audit_status" jdbcType="VARCHAR" property="shareAuditStatus" />
+    <result column="share_reason" jdbcType="VARCHAR" property="shareReason" />
+  </resultMap>
+</mapper>
