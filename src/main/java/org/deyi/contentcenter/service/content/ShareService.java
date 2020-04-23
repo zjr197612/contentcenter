@@ -6,6 +6,7 @@ import org.deyi.contentcenter.dao.content.ShareMapper;
 import org.deyi.contentcenter.domain.dto.content.ShareDTO;
 import org.deyi.contentcenter.domain.dto.user.UserDTO;
 import org.deyi.contentcenter.domain.entity.content.Share;
+import org.deyi.contentcenter.feignclient.UserCenterFeignClient;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -19,6 +20,7 @@ public class ShareService {
     private final ShareMapper shareMapper;
     private final RestTemplate restTemplate;
     private final DiscoveryClient discoveryClient;
+    private final UserCenterFeignClient userCenterFeignClient;//注入feign客户端
 
     public ShareDTO findById(Integer id){
         Share share = this.shareMapper.selectByPrimaryKey(id);
@@ -33,9 +35,13 @@ public class ShareService {
 //        log.info("请求的地下是:{}", targetURL);
         //实现一个客户端侧的负载均衡器结束
 
+        //restTemplate的调用方式
         //ribon会自动将user-center转换成实际地址
-        String targetURL="http://user-center/users/{id}";
-        UserDTO user=restTemplate.getForObject(targetURL,UserDTO.class,share.getUserId());//访问远程服务
+        //String targetURL="http://user-center/users/{id}";
+        //UserDTO user=restTemplate.getForObject(targetURL,UserDTO.class,share.getUserId());//访问远程服务
+
+        //feignClient的调用方式
+        UserDTO user=userCenterFeignClient.findById(share.getUserId());
 
         ShareDTO shareDTO = new ShareDTO();
         BeanUtils.copyProperties(share,shareDTO);

@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.alibaba.nacos.NacosDiscoveryProperties;
 import org.springframework.cloud.alibaba.nacos.ribbon.NacosServer;
-
+//自定义均衡负载策略类
 @Slf4j
 public class NacosWeightdRule extends AbstractLoadBalancerRule {
     @Autowired
@@ -27,8 +27,7 @@ public class NacosWeightdRule extends AbstractLoadBalancerRule {
             //ILoadBalancer loadBalancer = this.getLoadBalancer();
             BaseLoadBalancer loadBalancer=(BaseLoadBalancer)this.getLoadBalancer();
             //
-            String name=loadBalancer.getName();//获得微服务的名字
-            //log.info("");
+            String name=loadBalancer.getName();//获得微服务的名
             NamingService namingService = nacosDiscoveryProperties.namingServiceInstance();//得到服务相关的API
             Instance instance = namingService.selectOneHealthyInstance(name);//nacosClient自动通过基于权重的负载均衡算法，给我们提供一个实例
             log.info("选择port={}, instance={}",instance.getPort(),instance);

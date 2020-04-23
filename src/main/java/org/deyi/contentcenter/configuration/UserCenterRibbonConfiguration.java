@@ -6,6 +6,7 @@ package org.deyi.contentcenter.configuration;
 import org.springframework.cloud.netflix.ribbon.RibbonClients;
 import org.springframework.context.annotation.Configuration;
 
+//ribon配置类
 @Configuration
 @RibbonClients(defaultConfiguration = NacosWeightdRule.class) //全局配置
 public class UserCenterRibbonConfiguration {

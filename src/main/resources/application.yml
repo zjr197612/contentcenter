@@ -24,3 +24,23 @@ ribbon:
     enabled: true #立即加载
     clients: user-center #指定立即加载哪些微服务,多个服务: user-center,xxx,xxx
 
+#日志级别定义
+logging:
+  level:
+    org.deyi.contentcenter.feignclient.UserCenterFeignClient: debug
+#    #com.deyi: debug #表示com.deyi下的所有的类的日志输出级别是debug
+#    #feign的日志级别设置在接口的debug类型的基础上,假如这里设置为info,这里不会输出任何日志
+
+#feign日志细粒度级别配置
+#feign:
+#  client:
+#    config:
+#      user-center: #微服务的名称
+#        loggerLevel: full #这里的full仍然要结合上面的debug结合使用
+
+#feign日志全局配置
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full
